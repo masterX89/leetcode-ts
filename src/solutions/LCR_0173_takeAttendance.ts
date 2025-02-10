@@ -1,4 +1,4 @@
-function takeAttendance(records: number[]): number {
+function takeAttendance1(records: number[]): number {
   // O(log(n))
   let l = 0
   let r = records.length - 1
@@ -16,4 +16,13 @@ function takeAttendance(records: number[]): number {
   return l
 };
 
-export { takeAttendance }
+function takeAttendance2(records: number[]): number {
+  // O(n)
+  for (let i = 0; i < records.length; i++) {
+    if (records[i] !== i)
+      return i
+  }
+  return records.length
+}
+
+export { takeAttendance1, takeAttendance2 }
