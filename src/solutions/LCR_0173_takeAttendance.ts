@@ -1,4 +1,5 @@
 function takeAttendance(records: number[]): number {
+  // O(log(n))
   let l = 0
   let r = records.length - 1
   // [..., r, l, ...]
