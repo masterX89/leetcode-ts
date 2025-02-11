@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { search } from '../solutions/0033_searchRotated'
+import { search1, search2 } from '../solutions/0033_searchRotated'
 import { baseBinarySearchCases } from './data/baseBinarySearchCases'
 
 const testCases = [
@@ -17,7 +17,8 @@ const testCases = [
 ]
 
 const solutions = [
-  { name: 'search', fn: search },
+  { name: 'search1', fn: search1 },
+  { name: 'search2', fn: search2 },
 ]
 
 describe('rotate Search', () => {
