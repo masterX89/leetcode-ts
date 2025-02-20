@@ -9,6 +9,18 @@ describe('myLinkedList', () => {
   it('should create an empty linked list', () => {
     expect(linkedList.get(0)).toBe(-1)
     expect(linkedList.size()).toBe(0)
+    expect(linkedList.getHeadNode()).toBeNull()
+    expect(linkedList.getTailNode()).toBeNull()
+    expect(linkedList.getAtIndex(0)).toBeNull()
+  })
+
+  it('should return the correct node', () => {
+    linkedList.addAtHead(1)
+    expect(linkedList.getAtIndex(0)).not.toBeNull()
+    expect(linkedList.getHeadNode()).not.toBeNull()
+    expect(linkedList.getTailNode()).not.toBeNull()
+    expect(linkedList.get(0)).toBe(1)
+    expect(linkedList.get(2)).toBe(-1)
   })
   it('should add a node at head', () => {
     linkedList.addAtHead(1)

@@ -1,9 +1,9 @@
-class Node {
+class ListNode {
   val: number
-  next: Node | null
-  prev: Node | null
+  next: ListNode | null
+  prev: ListNode | null
 
-  constructor(val: number = 0, next: Node | null = null, prev: Node | null = null) {
+  constructor(val: number = 0, next: ListNode | null = null, prev: ListNode | null = null) {
     this.val = val
     this.next = next
     this.prev = prev
@@ -11,14 +11,14 @@ class Node {
 }
 
 class MyLinkedList {
-  private _dummyHead: Node
-  private _dummyTail: Node
+  private _dummyHead: ListNode
+  private _dummyTail: ListNode
   private _size: number
   private _strict: boolean
 
   constructor(strict: boolean = false) {
-    this._dummyHead = new Node(0)
-    this._dummyTail = new Node(0)
+    this._dummyHead = new ListNode(0)
+    this._dummyTail = new ListNode(0)
     this._dummyHead.next = this._dummyTail
     this._dummyTail.prev = this._dummyHead
     this._size = 0
@@ -26,25 +26,38 @@ class MyLinkedList {
   }
 
   get(index: number): number {
+    const node = this.getAtIndex(index)
+    return node ? node.val : -1
+  }
+
+  getHeadNode(): ListNode | null {
+    return this._size === 0 ? null : this._dummyHead.next
+  }
+
+  getTailNode(): ListNode | null {
+    return this._size === 0 ? null : this._dummyTail.prev
+  }
+
+  getAtIndex(index: number): ListNode | null {
     if (index < 0 || index >= this._size) {
-      return -1
+      return null
     }
     let curr = this._dummyHead
     for (let i = 0; i <= index; i++) {
       curr = curr.next!
     }
-    return curr.val
+    return curr
   }
 
   addAtHead(val: number): void {
-    const node = new Node(val, this._dummyHead.next, this._dummyHead)
+    const node = new ListNode(val, this._dummyHead.next, this._dummyHead)
     this._dummyHead.next!.prev = node
     this._dummyHead.next = node
     this._size++
   }
 
   addAtTail(val: number): void {
-    const node = new Node(val, this._dummyTail, this._dummyTail.prev)
+    const node = new ListNode(val, this._dummyTail, this._dummyTail.prev)
     this._dummyTail.prev!.next = node
     this._dummyTail.prev = node
     this._size++
@@ -62,7 +75,7 @@ class MyLinkedList {
     for (; i <= index; i++) {
       curr = curr.next!
     }
-    const node = new Node(val, curr, curr.prev)
+    const node = new ListNode(val, curr, curr.prev)
     curr.prev!.next = node
     curr.prev = node
     this._size++
@@ -90,4 +103,4 @@ class MyLinkedList {
   }
 }
 
-export { MyLinkedList }
+export { ListNode, MyLinkedList }
