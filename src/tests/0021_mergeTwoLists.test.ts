@@ -8,7 +8,7 @@ const testCases = [
   { list1: [], list2: [0], expected: [0] },
 ]
 
-describe('hasCycle', () => {
+describe('merge two non-decreasing lists', () => {
   testCases.forEach(({ list1, list2, expected }) => {
     it(`${list1} merge ${list2} should return ${expected}`, () => {
       const headNode1 = createSingleLinkedList(list1)
