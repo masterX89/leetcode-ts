@@ -1,29 +1,32 @@
 import type { ListNode } from './0707_MyLinkedList'
 
 function reverseKGroup(head: ListNode | null, k: number): ListNode | null {
-  const isReversible = (node: ListNode, k: number) => {
+  const isReversible = (node: ListNode | null, k: number) => {
     let p: ListNode | null = node
-    while (--k && p) {
+    for (let i = 0; i < k; i++) {
+      if (p === null) {
+        return false
+      }
       p = p.next
     }
-    return p !== null
+    return true
   }
+
   let resHead = null
-  let isFirst = true
   let tail = head
   let prev = null
   let prevTail = null
   let curr = head
-  while (isReversible(curr as ListNode, k)) {
-    let i = k
-    while (i--) {
-      const next = (curr as ListNode).next
-      ;(curr as ListNode).next = prev
-      prev = curr
-      curr = next
+  while (isReversible(curr, k)) {
+    for (let i = 0; i < k; i++) {
+      if (curr) {
+        const next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+      }
     }
-    if (isFirst) {
-      isFirst = false
+    if (tail === head) {
       resHead = prev
     }
     if (prevTail) {
@@ -31,8 +34,8 @@ function reverseKGroup(head: ListNode | null, k: number): ListNode | null {
     }
     prevTail = tail
     tail = curr
-    prev = null
   }
+
   if (prevTail) {
     prevTail.next = curr
   }
