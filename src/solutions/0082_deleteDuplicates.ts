@@ -1,0 +1,20 @@
+import { ListNode } from './0707_MyLinkedList'
+
+function deleteDuplicates(head: ListNode | null): ListNode | null {
+  const dummyHead = new ListNode(-1, head)
+  let curr: ListNode | null = dummyHead
+  while (curr) {
+    if (curr.next && curr.next.next && curr.next.val === curr.next.next.val) {
+      while (curr.next && curr.next.next && curr.next.val === curr.next.next.val) {
+        curr.next = curr.next.next
+      }
+      curr.next = curr.next.next
+    }
+    else {
+      curr = curr.next
+    }
+  }
+  return dummyHead.next
+};
+
+export { deleteDuplicates }
