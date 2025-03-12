@@ -4,19 +4,15 @@ const SortAlgorithms = {
       const resArr = []
       let i = 0
       let j = 0
-      while (i < leftArr.length || j < rightArr.length) {
-        const a = leftArr[i] ?? Infinity
-        const b = rightArr[j] ?? Infinity
-        if (a < b) {
-          resArr.push(a)
-          i++
+      while (i < leftArr.length && j < rightArr.length) {
+        if (leftArr[i] < rightArr[j]) {
+          resArr.push(leftArr[i++])
         }
         else {
-          resArr.push(b)
-          j++
+          resArr.push(rightArr[j++])
         }
       }
-      return resArr
+      return resArr.concat(leftArr.slice(i), rightArr.slice(j))
     }
     const mergeSort = (nums: number[]): number[] => {
       if (nums.length <= 1) {
