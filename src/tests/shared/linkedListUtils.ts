@@ -1,7 +1,17 @@
 import type { ListNode } from '../../solutions/0707_MyLinkedList'
 import { MyLinkedList } from '../../solutions/0707_MyLinkedList'
 
+interface LinkedListResult {
+  head: ListNode | null
+  tail: ListNode | null
+}
+
 function createSingleLinkedList(head: number[]): ListNode | null {
+  const { head: headNoe } = createSingleLinkedListWithTail(head)
+  return headNoe
+}
+
+function createSingleLinkedListWithTail(head: number[]): LinkedListResult {
   const linkedList = new MyLinkedList(true)
   head.forEach(val => linkedList.addAtTail(val))
   // clear linkedList dummyTail
@@ -15,7 +25,7 @@ function createSingleLinkedList(head: number[]): ListNode | null {
     p.prev = null
     p = p.next
   }
-  return linkedList.getHeadNode()
+  return { head: linkedList.getHeadNode(), tail }
 }
 
-export { createSingleLinkedList }
+export { createSingleLinkedList, createSingleLinkedListWithTail }
