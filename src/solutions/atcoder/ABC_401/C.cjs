@@ -3,10 +3,7 @@ function main(stdin) {
   const [N, K] = lines[0].split(' ').map(Number)
   const MOD = 10 ** 9
   const A = Array.from({ length: N + 1 }, () => 1)
-  const prefix = Array.from({ length: N + 2 }, () => 0)
-  for (let i = 1; i <= K; i++) {
-    prefix[i] = (prefix[i - 1] + A[i - 1]) % MOD
-  }
+  const prefix = Array.from({ length: N + 2 }, (_, i) => i)
   for (let i = K; i <= N; i++) {
     A[i] = (prefix[i] - prefix[i - K] + MOD) % MOD
     prefix[i + 1] = (prefix[i] + A[i]) % MOD
