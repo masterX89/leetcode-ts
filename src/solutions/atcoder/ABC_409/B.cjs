@@ -1,6 +1,6 @@
 function main(stdin) {
   const lines = stdin.trim().split('\n')
-  const n = Number(lines[0])
+  const N = Number(lines[0])
   const nums = lines[1].split(' ').map(Number)
   nums.sort((a, b) => a - b)
   function binarySearch(nums, target) {
@@ -15,21 +15,14 @@ function main(stdin) {
         l = c + 1
       }
     }
-    return r === nums.length ? -1 : r
+    return r
   }
-  let l = 0
-  let r = nums[n - 1]
-  while (l <= r) {
-    const c = l + ((r - l) >> 1)
-    const index = binarySearch(nums, c)
-    if (n - index >= c) {
-      l = c + 1
-    }
-    else {
-      r = c - 1
-    }
+  for (let i = N; i >= 1; i--) {
+    const index = binarySearch(nums, i)
+    if (N - index >= i)
+      return i
   }
-  return r
+  return 0
 }
 
 if (require.main === module) {
