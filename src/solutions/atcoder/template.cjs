@@ -470,11 +470,11 @@ function main(stdin) {
 function makeInputReader(input) {
   const cin = input.trim().split(/ |\n/)
   let cid = 0
-  function createNDArray(shape, fillVal) {
+  function createNDArray(shape, fillFn) {
     if (shape.length === 0)
-      return fillVal
+      return fillFn()
     const [dim, ...rest] = shape
-    return Array.from({ length: dim }, () => createNDArray(rest, fillVal))
+    return Array.from({ length: dim }, () => createNDArray(rest, fillFn))
   }
   return {
     next: () => Number(cin[cid++]),
