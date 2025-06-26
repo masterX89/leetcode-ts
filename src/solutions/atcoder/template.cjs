@@ -480,8 +480,8 @@ function makeInputReader(input) {
     next: () => Number(cin[cid++]),
     nextstr: () => cin[cid++],
     nextbig: () => BigInt(cin[cid++]),
-    nexts: (n, parse = true) =>
-      parse ? cin.slice(cid, cid += n).map(Number) : cin.slice(cid, cid += n),
+    nexts: (n, addNum = 0, parse = true) =>
+      parse ? cin.slice(cid, cid += n).map(s => Number(s) + addNum) : cin.slice(cid, cid += n),
     nextssort: (n, parse = true, desc = false) =>
       parse
         ? cin.slice(cid, cid += n).map(Number).sort((a, b) => desc ? b - a : a - b)
