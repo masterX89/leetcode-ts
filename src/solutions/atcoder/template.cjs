@@ -465,7 +465,6 @@ const Heap = this.Heap
 function main(stdin) {
   // eslint-disable-next-line unused-imports/no-unused-vars, no-unused-vars
   const { next, nextstr, nextbig, nexts, nextssort, nextm, xArray } = makeInputReader(stdin)
-  const [n, q] = nexts(2)
 }
 function makeInputReader(input) {
   const cin = input.trim().split(/ |\n/)
@@ -497,11 +496,9 @@ function makeInputReader(input) {
     xArray: createNDArray,
   }
 }
-
 if (require.main === module) {
   const fs = require('node:fs')
   const input = fs.readFileSync('/dev/stdin', 'utf8')
   console.log(main(input))
 }
-
 module.exports = { main }
