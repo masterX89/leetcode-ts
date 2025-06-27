@@ -1,58 +1,14 @@
 function main(stdin) {
   // eslint-disable-next-line unused-imports/no-unused-vars, no-unused-vars
   const { next, nextstr, nextbig, nexts, nextssort, nextm, xArray } = makeInputReader(stdin)
-  const [n, m] = nexts(2)
-  const uf = new UnionFind(n)
+  const n = next()
+  const s = nextstr()
+  const t = nextstr()
   let res = 0
-  for (let i = 0; i < m; i++) {
-    let [u, v] = nexts(2)
-    u--
-    v--
-    if (uf.isSame(u, v)) {
-      res++
-    }
-    else {
-      uf.union(u, v)
-    }
+  for (let i = 0; i < n; i++) {
+    res += s[i] !== t[i] ? 1 : 0
   }
   return res
-}
-class UnionFind {
-  constructor(n) {
-    this.parent = Array.from({ length: n }, (_, i) => i)
-    this.sizeArr = Array.from({ length: n }, () => 1)
-  }
-
-  find(x) {
-    if (this.parent[x] !== x) {
-      this.parent[x] = this.find(this.parent[x])
-    }
-    return this.parent[x]
-  }
-
-  union(x, y) {
-    const rootX = this.find(x)
-    const rootY = this.find(y)
-    if (rootX === rootY)
-      return false
-    if (this.sizeArr[rootX] < this.sizeArr[rootY]) {
-      this.parent[rootX] = rootY
-      this.sizeArr[rootY] += this.sizeArr[rootX]
-    }
-    else {
-      this.parent[rootY] = rootX
-      this.sizeArr[rootX] += this.sizeArr[rootY]
-    }
-    return true
-  }
-
-  isSame(x, y) {
-    return this.find(x) === this.find(y)
-  }
-
-  size(x) {
-    return this.sizeArr[this.find(x)]
-  }
 }
 function makeInputReader(input) {
   const cin = input.trim().split(/ |\n/)
