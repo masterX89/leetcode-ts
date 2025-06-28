@@ -7,19 +7,19 @@ function minus(a, b) {
   return add(add(a, -b), MOD)
 }
 function mul(a, b) {
-  let r = (a >> 20) * (b >> 20) * MOD_CUT
+  const r = (a >> 20) * (b >> 20) * MOD_CUT
     + (a & 0xFFF00000) * (b & 0xFFFFF)
     + (a & 0xFFFFF) * b
   return r % MOD
 }
-function pow(a, b) {
+function pow(a, n) {
   let r = 1
   let base = a
-  while (b) {
-    if (b & 1) {
+  while (n) {
+    if (n & 1) {
       r = mul(r, base)
     }
-    b >>= 1 // change to divide if b > 1e9 !!
+    n >>= 1 // change to divide if b > 1e9 !!
     base = mul(base, base)
   }
   return r
