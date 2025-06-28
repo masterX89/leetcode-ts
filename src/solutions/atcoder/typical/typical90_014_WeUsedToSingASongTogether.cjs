@@ -1,5 +1,4 @@
 function main(stdin) {
-  // TODO: add tests
   const lines = stdin.trim().split('\n')
   const n = Number(lines[0])
   const students = lines[1].split(' ').map(Number).sort((a, b) => a - b)

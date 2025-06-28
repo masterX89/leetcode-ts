@@ -1,5 +1,4 @@
 function main(stdin) {
-  // TODO: add tests
   const lines = stdin.trim().split('\n')
   const q = Number(lines[0])
   const queries = lines.slice(1).map(s => s.split(' ').map(Number))

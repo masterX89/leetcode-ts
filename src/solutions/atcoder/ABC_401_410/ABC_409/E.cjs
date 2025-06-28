@@ -1,5 +1,4 @@
 function main(stdin) {
-  // TODO: add tests
   const lines = stdin.trim().split('\n')
   const N = Number(lines[0])
   const x = lines[1].split(' ').map(Number)
