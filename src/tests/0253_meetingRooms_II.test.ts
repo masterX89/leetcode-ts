@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { minMeetingRooms1, minMeetingRooms2, minMeetingRooms3 } from '../solutions/0253_meetingRooms_II'
+import { minMeetingRooms1, minMeetingRooms2, minMeetingRooms3, minMeetingRooms4 } from '../solutions/0253_meetingRooms_II'
 
 const testCases = [
   { intervals: [[0, 30], [5, 10], [15, 20]], expected: 2 },
@@ -12,9 +12,10 @@ const solutions = [
   { name: 'diffArray', fn: minMeetingRooms1 },
   { name: 'focusStartEndNode', fn: minMeetingRooms2 },
   { name: 'focusStartEndInterval', fn: minMeetingRooms3 },
+  { name: 'PriorityQueue', fn: minMeetingRooms4 },
 ]
 
-describe('twoSum', () => {
+describe('minMeetingRooms_II', () => {
   solutions.forEach(({ name, fn }) => {
     describe(name, () => {
       testCases.forEach(({ intervals, expected }) => {
