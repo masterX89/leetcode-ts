@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-const { main } = require('../../solutions/atcoder/typical90_010_ScoreSumQueries.cjs')
+const { main } = require('../../solutions/atcoder/typical/typical90_010_ScoreSumQueries.cjs')
 
 const cases = [
   {

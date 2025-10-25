@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 function run(input) {
-  const proc = spawnSync('node', [join(__dirname, '../../solutions/atcoder/typical90_004.cjs')], {
+  const proc = spawnSync('node', [join(__dirname, '../../solutions/atcoder/typical/typical90_004.cjs')], {
     input,
     encoding: 'utf-8',
   })
